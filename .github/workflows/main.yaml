@@ -18,6 +18,7 @@ jobs:
           path: _overlay
       - run: cp -r _overlay/packages/* /src/pyodide/packages/
       - run: cd /src/pyodide
+      - run: ls -la /src/pyodide
       - run: pip install ./pyodide-build
       - run: cd /src/pyodide/packages/pycalphad
       - run: python -m pyodide_build buildpkg meta.yaml
