@@ -1,0 +1,31 @@
+From 6115708e64d946a7ad4aec9a3ac3aba871faec0c Mon Sep 17 00:00:00 2001
+From: Richard Otis <richard.otis@outlook.com>
+Date: Thu, 14 Apr 2022 18:15:58 -0700
+Subject: [PATCH 3/3] __init__.py: Disable unsupported module reference
+
+---
+ symengine/__init__.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/symengine/__init__.py b/symengine/__init__.py
+index f05422c..edec04b 100644
+--- a/symengine/__init__.py
++++ b/symengine/__init__.py
+@@ -60,10 +60,10 @@ if have_numpy:
+ __version__ = "0.9.2"
+ 
+ 
+-# To not expose internals
+-del lib.symengine_wrapper
+-del lib
+-del wrapper
++# XXX: pyodide seems to confuse this with a top-level library
++#del lib.symengine_wrapper
++#del lib
++#del wrapper
+ 
+ 
+ def test():
+-- 
+2.31.1.windows.1
+

@@ -1,0 +1,21 @@
+package:
+  name: symengine
+  version: 0.9.2
+source:
+  sha256: 9da048692d741bb001d9947a0e2bdf8909600cb4e6f3b9273d518cf93300955d
+  url: https://github.com/symengine/symengine.py/releases/download/v0.9.2/symengine.py-0.9.2.tar.gz
+  patches:
+    - patches/0001-Fix-for-latest-setuptools.patch
+    - patches/0002-setup.py-Force-symengine_dir-in-build.patch
+    - patches/0003-__init__.py-Disable-unsupported-module-reference.patch
+build:
+  ldflags: |
+    -L$(NUMPY_LIB)
+requirements:
+  run:
+    - setuptools
+    - numpy
+    - libsymengine
+test:
+  imports:
+    - symengine
