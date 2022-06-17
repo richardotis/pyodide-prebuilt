@@ -16,6 +16,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: _overlay
-      - run: cp -r _overlay/* /src/pyodide/packages/
-      - run: echo "Hello World"
+      - run: cp -r _overlay/packages/* /src/pyodide/packages/
+      - run: ls -la /src/pyodide/packages
 
