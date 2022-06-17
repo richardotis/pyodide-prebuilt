@@ -19,6 +19,7 @@ jobs:
         with:
           path: _overlay
       - run: cp -r _overlay/packages/* /src/pyodide/packages/
+      - run: mkdir -p /src/pyodide/dist
       - run: python -m pip install /src/pyodide/pyodide-build/.
       - run: python -m pyodide_build buildpkg /src/pyodide/packages/pycalphad/meta.yaml
       - run: python -m pyodide_build buildpkg /src/pyodide/packages/gmp/meta.yaml
