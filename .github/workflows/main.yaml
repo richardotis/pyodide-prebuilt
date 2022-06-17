@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Pyodide
+        uses: addnab/docker-run-action@v3
+        with:
+          registry: docker.io
+          image: pyodide/pyodide:0.20.0
+          shell: bash
+          run: |
+            echo "Hello World"
