@@ -1,12 +1,9 @@
 package:
   name: pycalphad
-  version: 0.10.0
+  version: 0.10.1
 source:
-  sha256: 1138da53f5e2c0c68e98033e38bee18c9c6242e55bab42d75d8164ec7159b4d9
-  url: https://files.pythonhosted.org/packages/7c/a0/5757f97fdd6349d597f13dad82cc3c9fc8e301a451087cd93a650986c714/pycalphad-0.10.0.tar.gz
-  patches:
-    - patches/0001-FIX-lower_convex_hull-32bit-array-compatibility.patch
-    - patches/0002-FIX-Fall-back-to-lambda-backend-if-LLVM-is-not-enabl.patch
+  sha256: 8325a327280d971b366da0c6c4bee88ade4b35aa07fccc028381f7c543535e9a
+  url: https://files.pythonhosted.org/packages/68/08/f29c25d2e33611464ff819acf13b285a570fdc86ccece237d752e4780db8/pycalphad-0.10.1.tar.gz
 build:
   ldflags: |
     -L$(NUMPY_LIB)
