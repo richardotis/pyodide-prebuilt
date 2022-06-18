@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: pyodide/pyodide:0.20.0
-      options: --cpus 1
       env:
         PYODIDE_ROOT: /src/pyodide/
     steps:
@@ -20,14 +19,9 @@ jobs:
           path: _overlay
       - run: cp -r _overlay/packages/* /src/pyodide/packages/
       - run: mkdir -p /src/pyodide/dist
-      # Work around deletion of dist in pyodide prebuilt image
-      - run: wget https://github.com/pyodide/pyodide/releases/download/0.20.0/pyodide-build-0.20.0.tar.bz2
-      - run: tar -xf pyodide-build-0.20.0.tar.bz2 -C /src/pyodide/dist
       - run: python -m pip install /src/pyodide/pyodide-build/.
-      #- run: python -m pyodide_build buildpkg /src/pyodide/packages/pycalphad/meta.yaml
       - run: python -m pyodide_build buildpkg /src/pyodide/packages/gmp/meta.yaml
       - run: python -m pyodide_build buildpkg /src/pyodide/packages/libsymengine/meta.yaml
-      #- run: python -m pyodide_build buildpkg /src/pyodide/packages/symengine/meta.yaml
       - run: python -m pyodide_build buildall --only 'symengine,pycalphad' /src/pyodide/packages /src/pyodide/dist
       - uses: actions/upload-artifact@v3
         with:
